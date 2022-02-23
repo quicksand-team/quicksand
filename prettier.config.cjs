@@ -20,4 +20,5 @@ module.exports = {
   vueIndentScriptAndStyle: false,
   endOfLine: 'lf',
   embeddedLanguageFormatting: 'auto',
+  plugins: ['./node_modules/prettier-plugin-packagejson'],
 };

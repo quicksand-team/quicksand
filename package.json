@@ -1,23 +1,17 @@
 {
   "name": "@quicksand/srcs",
-  "private": true,
   "version": "0.1.0-alpha.0",
-  "type": "module",
-  "packageManager": "pnpm@6.32.1",
+  "private": true,
   "description": "流沙项目集",
+  "license": "ISC",
   "author": {
     "name": "quicksand",
     "email": "longzhileixue@vip.qq.com",
     "url": "https://blog.quicksand.team"
   },
-  "license": "ISC",
-  "engines": {
-    "node": ">=16",
-    "pnpm": ">=6"
-  },
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
+  "type": "module",
+  "scripts": {
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@changesets/cli": "^2.21.0",
@@ -27,9 +21,16 @@
     "@modern-js/plugin-jarvis": "^1.2.1",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.4",
-    "prettier": "^2.5.1"
+    "prettier": "^2.5.1",
+    "prettier-plugin-packagejson": "^2.2.15"
   },
-  "scripts": {
-    "prepare": "husky install"
-  }
+  "engines": {
+    "node": ">=16",
+    "pnpm": ">=6"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "packageManager": "pnpm@6.32.1"
 }
