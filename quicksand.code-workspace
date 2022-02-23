@@ -1,0 +1,11 @@
+{
+  "folders": [
+    {
+      "name": "工作区",
+      "path": "."
+    },
+  ],
+  "settings": {
+    "editor.bracketPairColorization.enabled": true
+  }
+}
