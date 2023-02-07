@@ -1,0 +1,3 @@
+{
+  "extends": "@quicksand/typescript-config/tsconfig.json"
+}
