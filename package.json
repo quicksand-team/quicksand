@@ -34,7 +34,7 @@
     "node": ">=16.0.0"
   },
   "lint-staged": {
-    "**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx}": "eslint --ext .js,.jsx,.ts,.tsx",
+    "**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx}": "eslint --fix",
     "**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx,css,scss,sass,less,md,json,xml,toml}": [
       "prettier --write",
       "git add"
