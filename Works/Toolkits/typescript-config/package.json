@@ -1,0 +1,12 @@
+{
+  "name": "@quicksand/typescript-config",
+  "version": "0.1.0-alpha.1",
+  "type": "commonjs",
+  "main": "./typescript.json",
+  "peerDependencies": {
+    "typescript": "^4.9.4"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.4"
+  }
+}
