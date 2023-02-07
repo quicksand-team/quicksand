@@ -1,0 +1,16 @@
+{
+  "name": "@quicksand/commitlint-config",
+  "version": "0.1.0-alpha.1",
+  "type": "commonjs",
+  "main": "./commitlint.config.js",
+  "dependencies": {
+    "@commitlint/config-conventional": "^17.4.2",
+    "@commitlint/prompt-cli": "^17.4.2"
+  },
+  "peerDependencies": {
+    "@commitlint/cli": "^17.4.2"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.4.2"
+  }
+}
