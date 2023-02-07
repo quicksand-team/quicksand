@@ -1,0 +1,85 @@
+{
+  "folders": [
+    {
+      "path": ".",
+      "name": "工作区"
+    },
+    {
+      "path": "./Works/Toolkits/prettier-config",
+      "name": "prettier-config"
+    },
+    {
+      "path": "./Works/Toolkits/eslint-config",
+      "name": "eslint-config"
+    },
+    {
+      "path": "./Works/Toolkits/typescript-config",
+      "name": "typescript-config"
+    },
+    {
+      "path": "./Works/Toolkits/commitlint-config",
+      "name": "commitlint-config"
+    }
+  ],
+  "settings": {
+    "eslint.validate": [
+      "javascript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact",
+      "vue"
+    ],
+    "eslint.experimental.useFlatConfig": true,
+    "stylelint.validate": ["css", "scss", "less", "sass"],
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true,
+      "source.fixAll.stylelint": true,
+      "source.fixAll.markdownlint": true
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[vue]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[css]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[less]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[scss]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[html]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[jsonc]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[astro]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[prisma]": {
+      "editor.defaultFormatter": "Prisma.prisma"
+    },
+    "prettier.documentSelectors": ["**/*.astro"],
+    "editor.formatOnSave": true,
+    "editor.rulers": [80, 100, 120],
+    "commentTranslate.multiLineMerge": false,
+    "eslint.packageManager": "pnpm"
+  }
+}

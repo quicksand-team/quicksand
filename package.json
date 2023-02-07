@@ -1,25 +1,44 @@
 {
-  "name": "Quicksand",
-  "version": "0.0.0",
   "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
+  "name": "@quicksand/src",
+  "version": "0.1.0-alpha.1",
+  "type": "module",
   "scripts": {
     "build": "turbo run build",
+    "bump:alpha": "changeset pre enter alpha & changeset version & changeset pre exit",
+    "bump:beta": "changeset pre enter beta & changeset version & changeset pre exit",
+    "bump:next": "changeset pre enter next & changeset version & changeset pre exit",
+    "changeset": "changeset",
+    "ci:publish": "turbo run build lint test && pnpm ci:version && pnpm publish -r",
+    "ci:version": "changeset version",
+    "commit": "commit",
     "dev": "turbo run dev",
+    "format": "prettier --write \"**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx,css,scss,sass,less,md,json,xml,toml}\"",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "prepare": "husky install",
+    "test": "turbo run test"
   },
+  "workspaces": [
+    "Works/**"
+  ],
   "devDependencies": {
-    "eslint-config-custom": "workspace:*",
-    "prettier": "latest",
-    "turbo": "latest"
+    "@changesets/cli": "^2.26.0",
+    "@quicksand/commitlint-config": "workspace:*",
+    "@quicksand/eslint-config": "workspace:*",
+    "@quicksand/prettier-config": "workspace:*",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.1.0",
+    "turbo": "^1.7.3"
   },
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=16.0.0"
   },
-  "dependencies": {},
-  "packageManager": "pnpm@7.26.1"
+  "lint-staged": {
+    "**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx}": "eslint --ext .js,.jsx,.ts,.tsx",
+    "**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx,css,scss,sass,less,md,json,xml,toml}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "packageManager": "pnpm@7.26.3"
 }
