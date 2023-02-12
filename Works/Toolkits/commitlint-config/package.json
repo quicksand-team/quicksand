@@ -1,16 +1,20 @@
 {
   "name": "@quicksand/commitlint-config",
-  "version": "0.1.0-alpha.1",
+  "version": "1.0.0-alpha.0",
   "type": "commonjs",
-  "main": "./commitlint.config.js",
+  "main": "./index.js",
   "dependencies": {
     "@commitlint/config-conventional": "^17.4.2",
-    "@commitlint/prompt-cli": "^17.4.2"
+    "@commitlint/config-pnpm-scopes": "^17.4.2",
+    "@commitlint/cz-commitlint": "^17.4.2",
+    "@pnpm/find-workspace-packages": "^5.0.33"
   },
   "peerDependencies": {
-    "@commitlint/cli": "^17.4.2"
+    "@commitlint/cli": "^17",
+    "commitizen": "^4"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.4.2"
+    "@commitlint/cli": "^17.4.2",
+    "commitizen": "^4.3.0"
   }
 }

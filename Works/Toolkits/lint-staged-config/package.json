@@ -1,0 +1,12 @@
+{
+  "name": "@quicksand/lint-staged-config",
+  "version": "1.0.0-alpha.0",
+  "type": "commonjs",
+  "main": "./lint-staged.config.js",
+  "peerDependencies": {
+    "lint-staged": "^13"
+  },
+  "devDependencies": {
+    "lint-staged": "^13.1.1"
+  }
+}

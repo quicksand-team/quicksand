@@ -19,6 +19,10 @@
     {
       "path": "./Works/Toolkits/commitlint-config",
       "name": "commitlint-config"
+    },
+    {
+      "path": "./Works/Toolkits/lint-staged-config",
+      "name": "lint-staged-config"
     }
   ],
   "settings": {
