@@ -42,7 +42,7 @@
     "turbo": "^1.7.4"
   },
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=16.18.1"
   },
   "publishConfig": {
     "access": "public"
