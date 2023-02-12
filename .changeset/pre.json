@@ -1,0 +1,12 @@
+{
+  "mode": "exit",
+  "tag": "alpha",
+  "initialVersions": {
+    "@quicksand/commitlint-config": "1.0.0-alpha.1",
+    "@quicksand/eslint-config": "1.0.0-alpha.1",
+    "@quicksand/lint-staged-config": "1.0.0-alpha.1",
+    "@quicksand/prettier-config": "1.0.0-alpha.1",
+    "@quicksand/typescript-config": "1.0.0-alpha.1"
+  },
+  "changesets": ["small-masks-lay"]
+}

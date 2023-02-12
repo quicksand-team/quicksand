@@ -1,0 +1,24 @@
+{
+  "publishedPackages": [
+    {
+      "name": "@quicksand/commitlint-config",
+      "version": "1.0.0-alpha.1"
+    },
+    {
+      "name": "@quicksand/lint-staged-config",
+      "version": "1.0.0-alpha.1"
+    },
+    {
+      "name": "@quicksand/prettier-config",
+      "version": "1.0.0-alpha.1"
+    },
+    {
+      "name": "@quicksand/typescript-config",
+      "version": "1.0.0-alpha.1"
+    },
+    {
+      "name": "@quicksand/eslint-config",
+      "version": "1.0.0-alpha.1"
+    }
+  ]
+}
