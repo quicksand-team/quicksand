@@ -4,41 +4,48 @@
   "version": "0.1.0-alpha.1",
   "type": "module",
   "scripts": {
+    "pre": "modern pre",
     "build": "turbo run build",
-    "bump:alpha": "changeset pre enter alpha & changeset version & changeset pre exit",
-    "bump:beta": "changeset pre enter beta & changeset version & changeset pre exit",
-    "bump:next": "changeset pre enter next & changeset version & changeset pre exit",
+    "bump": "modern bump",
+    "change": "modern change",
+    "change-status": "modern change-status",
     "changeset": "changeset",
-    "ci:publish": "turbo run build lint test && pnpm ci:version && pnpm publish -r",
-    "ci:version": "changeset version",
-    "commit": "commit",
+    "commit": "git-cz",
+    "deploy": "modern deploy",
     "dev": "turbo run dev",
-    "format": "prettier --write \"**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx,css,scss,sass,less,md,json,xml,toml}\"",
-    "lint": "turbo run lint",
+    "format": "prettier . --write",
+    "gen-release-note": "modern gen-release-note",
+    "lint": "modern lint & turbo run lint",
+    "new": "modern new",
     "prepare": "husky install",
-    "test": "turbo run test"
+    "release": "modern release",
+    "reset": "modern clear",
+    "test": "turbo run test",
+    "upgrade": "modern upgrade"
+  },
+  "config": {
+    "commitizen": {
+      "path": "@commitlint/cz-commitlint"
+    }
   },
   "workspaces": [
     "Works/**"
   ],
   "devDependencies": {
     "@changesets/cli": "^2.26.0",
+    "@modern-js/monorepo-tools": "^2.4.0",
     "@quicksand/commitlint-config": "workspace:*",
     "@quicksand/eslint-config": "workspace:*",
+    "@quicksand/lint-staged-config": "workspace:*",
     "@quicksand/prettier-config": "workspace:*",
-    "husky": "^8.0.0",
-    "lint-staged": "^13.1.0",
-    "turbo": "^1.7.3"
+    "husky": "^8.0.3",
+    "turbo": "^1.7.4"
   },
   "engines": {
     "node": ">=16.0.0"
   },
-  "lint-staged": {
-    "**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx}": "eslint --fix",
-    "**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx,css,scss,sass,less,md,json,xml,toml}": [
-      "prettier --write",
-      "git add"
-    ]
+  "publishConfig": {
+    "access": "public"
   },
   "packageManager": "pnpm@7.26.3"
 }

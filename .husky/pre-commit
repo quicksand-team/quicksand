@@ -4,4 +4,4 @@
 # npm run format & npm run lint
 
 # 只检测暂存区域
-npx lint-staged
+npx --no -- lint-staged
