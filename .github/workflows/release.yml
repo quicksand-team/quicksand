@@ -28,10 +28,6 @@ jobs:
         with:
           # This makes Actions fetch only one branch to release
           fetch-depth: 1
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v3.6.0
-        with:
-          node-version: 16
       - name: Release
         uses: modern-js-dev/actions@main
         with:
