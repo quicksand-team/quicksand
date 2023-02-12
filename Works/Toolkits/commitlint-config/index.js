@@ -1,5 +1,8 @@
 module.exports = {
-  extends: ['@commitlint/config-conventional'], // => @commitlint/config-conventional
+  extends: [
+    '@commitlint/config-conventional',
+    '@commitlint/config-pnpm-scopes',
+  ], // => @commitlint/config-conventional
   rules: {
     'body-leading-blank': [1, 'always'],
     'body-max-line-length': [2, 'always', 100],
@@ -34,6 +37,15 @@ module.exports = {
     ],
   },
   prompt: {
+    settings: {},
+    messages: {
+      skip: ':skip',
+      max: 'upper %d chars',
+      min: '%d chars at least',
+      emptyWarning: 'can not be empty',
+      upperLimitWarning: 'over limit',
+      lowerLimitWarning: 'below limit',
+    },
     questions: {
       type: {
         description: "Select the type of change that you're committing",
