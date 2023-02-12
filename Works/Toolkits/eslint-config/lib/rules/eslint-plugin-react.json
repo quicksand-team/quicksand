@@ -1,0 +1,3019 @@
+{
+  "boolean-prop-naming": {
+    "meta": {
+      "docs": {
+        "category": "Stylistic Issues",
+        "description": "Enforces consistent naming for boolean props",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/boolean-prop-naming.md"
+      },
+      "messages": {
+        "patternMismatch": "Prop name ({{propName}}) doesn't match rule ({{pattern}})"
+      },
+      "schema": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "propTypeNames": {
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "type": "array",
+              "uniqueItems": true
+            },
+            "rule": {
+              "default": "^(is|has)[A-Z]([A-Za-z0-9]?)+",
+              "minLength": 1,
+              "type": "string"
+            },
+            "message": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "validateNested": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          "type": "object"
+        }
+      ]
+    }
+  },
+  "button-has-type": {
+    "meta": {
+      "docs": {
+        "description": "Disallow usage of `button` elements without an explicit `type` attribute",
+        "category": "Possible Errors",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/button-has-type.md"
+      },
+      "messages": {
+        "missingType": "Missing an explicit type attribute for button",
+        "complexType": "The button type attribute must be specified by a static string or a trivial ternary expression",
+        "invalidValue": "\"{{value}}\" is an invalid value for button type attribute",
+        "forbiddenValue": "\"{{value}}\" is an invalid value for button type attribute"
+      },
+      "schema": [
+        {
+          "type": "object",
+          "properties": {
+            "button": {
+              "default": true,
+              "type": "boolean"
+            },
+            "submit": {
+              "default": true,
+              "type": "boolean"
+            },
+            "reset": {
+              "default": true,
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "default-props-match-prop-types": {
+    "meta": {
+      "docs": {
+        "description": "Enforce all defaultProps have a corresponding non-required PropType",
+        "category": "Best Practices",
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/default-props-match-prop-types.md"
+      },
+      "messages": {
+        "requiredHasDefault": "defaultProp \"{{name}}\" defined for isRequired propType.",
+        "defaultHasNoType": "defaultProp \"{{name}}\" has no corresponding propTypes declaration."
+      },
+      "schema": [
+        {
+          "type": "object",
+          "properties": {
+            "allowRequiredDefaults": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "destructuring-assignment": {
+    "meta": {
+      "docs": {
+        "description": "Enforce consistent usage of destructuring assignment of props, state, and context",
+        "category": "Stylistic Issues",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/destructuring-assignment.md"
+      },
+      "fixable": "code",
+      "messages": {
+        "noDestructPropsInSFCArg": "Must never use destructuring props assignment in SFC argument",
+        "noDestructContextInSFCArg": "Must never use destructuring context assignment in SFC argument",
+        "noDestructAssignment": "Must never use destructuring {{type}} assignment",
+        "useDestructAssignment": "Must use destructuring {{type}} assignment",
+        "destructureInSignature": "Must destructure props in the function signature."
+      },
+      "schema": [
+        {
+          "type": "string",
+          "enum": ["always", "never"]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "ignoreClassFields": {
+              "type": "boolean"
+            },
+            "destructureInSignature": {
+              "type": "string",
+              "enum": ["always", "ignore"]
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "display-name": {
+    "meta": {
+      "docs": {
+        "description": "Disallow missing displayName in a React component definition",
+        "category": "Best Practices",
+        "recommended": true,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/display-name.md"
+      },
+      "messages": {
+        "noDisplayName": "Component definition is missing display name"
+      },
+      "schema": [
+        {
+          "type": "object",
+          "properties": {
+            "ignoreTranspilerName": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "forbid-component-props": {
+    "meta": {
+      "docs": {
+        "description": "Disallow certain props on components",
+        "category": "Best Practices",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/forbid-component-props.md"
+      },
+      "messages": {
+        "propIsForbidden": "Prop \"{{prop}}\" is forbidden on Components"
+      },
+      "schema": [
+        {
+          "type": "object",
+          "properties": {
+            "forbid": {
+              "type": "array",
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "propName": {
+                        "type": "string"
+                      },
+                      "allowedFor": {
+                        "type": "array",
+                        "uniqueItems": true,
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "message": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "forbid-dom-props": {
+    "meta": {
+      "docs": {
+        "description": "Disallow certain props on DOM Nodes",
+        "category": "Best Practices",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/forbid-dom-props.md"
+      },
+      "messages": {
+        "propIsForbidden": "Prop \"{{prop}}\" is forbidden on DOM Nodes"
+      },
+      "schema": [
+        {
+          "type": "object",
+          "properties": {
+            "forbid": {
+              "type": "array",
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "propName": {
+                        "type": "string"
+                      },
+                      "disallowedFor": {
+                        "type": "array",
+                        "uniqueItems": true,
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "message": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                ],
+                "minLength": 1
+              },
+              "uniqueItems": true
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "forbid-elements": {
+    "meta": {
+      "docs": {
+        "description": "Disallow certain elements",
+        "category": "Best Practices",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/forbid-elements.md"
+      },
+      "messages": {
+        "forbiddenElement": "<{{element}}> is forbidden",
+        "forbiddenElement_message": "<{{element}}> is forbidden, {{message}}"
+      },
+      "schema": [
+        {
+          "type": "object",
+          "properties": {
+            "forbid": {
+              "type": "array",
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "element": {
+                        "type": "string"
+                      },
+                      "message": {
+                        "type": "string"
+                      }
+                    },
+                    "required": ["element"],
+                    "additionalProperties": false
+                  }
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "forbid-foreign-prop-types": {
+    "meta": {
+      "docs": {
+        "description": "Disallow using another component's propTypes",
+        "category": "Best Practices",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/forbid-foreign-prop-types.md"
+      },
+      "messages": {
+        "forbiddenPropType": "Using propTypes from another component is not safe because they may be removed in production builds"
+      },
+      "schema": [
+        {
+          "type": "object",
+          "properties": {
+            "allowInPropTypes": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "forbid-prop-types": {
+    "meta": {
+      "docs": {
+        "description": "Disallow certain propTypes",
+        "category": "Best Practices",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/forbid-prop-types.md"
+      },
+      "messages": {
+        "forbiddenPropType": "Prop type \"{{target}}\" is forbidden"
+      },
+      "schema": [
+        {
+          "type": "object",
+          "properties": {
+            "forbid": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "checkContextTypes": {
+              "type": "boolean"
+            },
+            "checkChildContextTypes": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": true
+        }
+      ]
+    }
+  },
+  "function-component-definition": {
+    "meta": {
+      "docs": {
+        "description": "Enforce a specific function type for function components",
+        "category": "Stylistic Issues",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/function-component-definition.md"
+      },
+      "fixable": "code",
+      "messages": {
+        "function-declaration": "Function component is not a function declaration",
+        "function-expression": "Function component is not a function expression",
+        "arrow-function": "Function component is not an arrow function"
+      },
+      "schema": [
+        {
+          "type": "object",
+          "properties": {
+            "namedComponents": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "function-declaration",
+                    "arrow-function",
+                    "function-expression"
+                  ]
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "enum": [
+                      "function-declaration",
+                      "arrow-function",
+                      "function-expression"
+                    ]
+                  }
+                }
+              ]
+            },
+            "unnamedComponents": {
+              "anyOf": [
+                {
+                  "enum": ["arrow-function", "function-expression"]
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "enum": ["arrow-function", "function-expression"]
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  },
+  "hook-use-state": {
+    "meta": {
+      "docs": {
+        "description": "Ensure destructuring and symmetric naming of useState hook value and setter variables",
+        "category": "Best Practices",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/hook-use-state.md"
+      },
+      "messages": {
+        "useStateErrorMessage": "useState call is not destructured into value + setter pair",
+        "useStateErrorMessageOrAddOption": "useState call is not destructured into value + setter pair (you can allow destructuring by enabling \"allowDestructuredState\" option)",
+        "suggestPair": "Destructure useState call into value + setter pair",
+        "suggestMemo": "Replace useState call with useMemo"
+      },
+      "schema": [
+        {
+          "type": "object",
+          "properties": {
+            "allowDestructuredState": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        }
+      ],
+      "type": "suggestion",
+      "hasSuggestions": true
+    }
+  },
+  "iframe-missing-sandbox": {
+    "meta": {
+      "docs": {
+        "description": "Enforce sandbox attribute on iframe elements",
+        "category": "Best Practices",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/iframe-missing-sandbox.md"
+      },
+      "schema": [],
+      "messages": {
+        "attributeMissing": "An iframe element is missing a sandbox attribute",
+        "invalidValue": "An iframe element defines a sandbox attribute with invalid value \"{{ value }}\"",
+        "invalidCombination": "An iframe element defines a sandbox attribute with both allow-scripts and allow-same-origin which is invalid"
+      }
+    }
+  },
+  "jsx-boolean-value": {
+    "meta": {
+      "docs": {
+        "description": "Enforce boolean attributes notation in JSX",
+        "category": "Stylistic Issues",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-boolean-value.md"
+      },
+      "fixable": "code",
+      "messages": {
+        "omitBoolean": "Value must be omitted for boolean attributes{{exceptionsMessage}}",
+        "omitBoolean_noMessage": "Value must be omitted for boolean attributes",
+        "setBoolean": "Value must be set for boolean attributes{{exceptionsMessage}}",
+        "setBoolean_noMessage": "Value must be set for boolean attributes"
+      },
+      "schema": {
+        "anyOf": [
+          {
+            "type": "array",
+            "items": [
+              {
+                "enum": ["always", "never"]
+              }
+            ],
+            "additionalItems": false
+          },
+          {
+            "type": "array",
+            "items": [
+              {
+                "enum": ["always"]
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "never": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "uniqueItems": true
+                  }
+                }
+              }
+            ],
+            "additionalItems": false
+          },
+          {
+            "type": "array",
+            "items": [
+              {
+                "enum": ["never"]
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "always": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "uniqueItems": true
+                  }
+                }
+              }
+            ],
+            "additionalItems": false
+          }
+        ]
+      }
+    }
+  },
+  "jsx-child-element-spacing": {
+    "meta": {
+      "docs": {
+        "description": "Enforce or disallow spaces inside of curly braces in JSX attributes and expressions",
+        "category": "Stylistic Issues",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-child-element-spacing.md"
+      },
+      "fixable": null,
+      "messages": {
+        "spacingAfterPrev": "Ambiguous spacing after previous element {{element}}",
+        "spacingBeforeNext": "Ambiguous spacing before next element {{element}}"
+      },
+      "schema": []
+    }
+  },
+  "jsx-closing-bracket-location": {
+    "meta": {
+      "docs": {
+        "description": "Enforce closing bracket location in JSX",
+        "category": "Stylistic Issues",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-closing-bracket-location.md"
+      },
+      "fixable": "code",
+      "messages": {
+        "bracketLocation": "The closing bracket must be {{location}}{{details}}"
+      },
+      "schema": [
+        {
+          "anyOf": [
+            {
+              "enum": [
+                "after-props",
+                "props-aligned",
+                "tag-aligned",
+                "line-aligned"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "location": {
+                  "enum": [
+                    "after-props",
+                    "props-aligned",
+                    "tag-aligned",
+                    "line-aligned"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "nonEmpty": {
+                  "enum": [
+                    "after-props",
+                    "props-aligned",
+                    "tag-aligned",
+                    "line-aligned",
+                    false
+                  ]
+                },
+                "selfClosing": {
+                  "enum": [
+                    "after-props",
+                    "props-aligned",
+                    "tag-aligned",
+                    "line-aligned",
+                    false
+                  ]
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "jsx-closing-tag-location": {
+    "meta": {
+      "docs": {
+        "description": "Enforce closing tag location for multiline JSX",
+        "category": "Stylistic Issues",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-closing-tag-location.md"
+      },
+      "fixable": "whitespace",
+      "messages": {
+        "onOwnLine": "Closing tag of a multiline JSX expression must be on its own line.",
+        "matchIndent": "Expected closing tag to match indentation of opening."
+      }
+    }
+  },
+  "jsx-curly-spacing": {
+    "meta": {
+      "docs": {
+        "description": "Enforce or disallow spaces inside of curly braces in JSX attributes and expressions",
+        "category": "Stylistic Issues",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-curly-spacing.md"
+      },
+      "fixable": "code",
+      "messages": {
+        "noNewlineAfter": "There should be no newline after '{{token}}'",
+        "noNewlineBefore": "There should be no newline before '{{token}}'",
+        "noSpaceAfter": "There should be no space after '{{token}}'",
+        "noSpaceBefore": "There should be no space before '{{token}}'",
+        "spaceNeededAfter": "A space is required after '{{token}}'",
+        "spaceNeededBefore": "A space is required before '{{token}}'"
+      },
+      "schema": {
+        "definitions": {
+          "basicConfig": {
+            "type": "object",
+            "properties": {
+              "when": {
+                "enum": ["always", "never"]
+              },
+              "allowMultiline": {
+                "type": "boolean"
+              },
+              "spacing": {
+                "type": "object",
+                "properties": {
+                  "objectLiterals": {
+                    "enum": ["always", "never"]
+                  }
+                }
+              }
+            }
+          },
+          "basicConfigOrBoolean": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/basicConfig"
+              },
+              {
+                "type": "boolean"
+              }
+            ]
+          }
+        },
+        "type": "array",
+        "items": [
+          {
+            "anyOf": [
+              {
+                "allOf": [
+                  {
+                    "$ref": "#/definitions/basicConfig"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "attributes": {
+                        "$ref": "#/definitions/basicConfigOrBoolean"
+                      },
+                      "children": {
+                        "$ref": "#/definitions/basicConfigOrBoolean"
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "enum": ["always", "never"]
+              }
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "allowMultiline": {
+                "type": "boolean"
+              },
+              "spacing": {
+                "type": "object",
+                "properties": {
+                  "objectLiterals": {
+                    "enum": ["always", "never"]
+                  }
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        ]
+      }
+    }
+  },
+  "jsx-curly-newline": {
+    "meta": {
+      "type": "layout",
+      "docs": {
+        "description": "Enforce consistent linebreaks in curly braces in JSX attributes and expressions",
+        "category": "Stylistic Issues",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-curly-newline.md"
+      },
+      "fixable": "whitespace",
+      "schema": [
+        {
+          "anyOf": [
+            {
+              "enum": ["consistent", "never"]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "singleline": {
+                  "enum": ["consistent", "require", "forbid"]
+                },
+                "multiline": {
+                  "enum": ["consistent", "require", "forbid"]
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        }
+      ],
+      "messages": {
+        "expectedBefore": "Expected newline before '}'.",
+        "expectedAfter": "Expected newline after '{'.",
+        "unexpectedBefore": "Unexpected newline before '}'.",
+        "unexpectedAfter": "Unexpected newline after '{'."
+      }
+    }
+  },
+  "jsx-equals-spacing": {
+    "meta": {
+      "docs": {
+        "description": "Enforce or disallow spaces around equal signs in JSX attributes",
+        "category": "Stylistic Issues",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-equals-spacing.md"
+      },
+      "fixable": "code",
+      "messages": {
+        "noSpaceBefore": "There should be no space before '='",
+        "noSpaceAfter": "There should be no space after '='",
+        "needSpaceBefore": "A space is required before '='",
+        "needSpaceAfter": "A space is required after '='"
+      },
+      "schema": [
+        {
+          "enum": ["always", "never"]
+        }
+      ]
+    }
+  },
+  "jsx-filename-extension": {
+    "meta": {
+      "docs": {
+        "description": "Disallow file extensions that may contain JSX",
+        "category": "Stylistic Issues",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-filename-extension.md"
+      },
+      "messages": {
+        "noJSXWithExtension": "JSX not allowed in files with extension '{{ext}}'",
+        "extensionOnlyForJSX": "Only files containing JSX may use the extension '{{ext}}'"
+      },
+      "schema": [
+        {
+          "type": "object",
+          "properties": {
+            "allow": {
+              "enum": ["always", "as-needed"]
+            },
+            "extensions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "jsx-first-prop-new-line": {
+    "meta": {
+      "docs": {
+        "description": "Enforce proper position of the first property in JSX",
+        "category": "Stylistic Issues",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-first-prop-new-line.md"
+      },
+      "fixable": "code",
+      "messages": {
+        "propOnNewLine": "Property should be placed on a new line",
+        "propOnSameLine": "Property should be placed on the same line as the component declaration"
+      },
+      "schema": [
+        {
+          "enum": ["always", "never", "multiline", "multiline-multiprop"]
+        }
+      ]
+    }
+  },
+  "jsx-handler-names": {
+    "meta": {
+      "docs": {
+        "description": "Enforce event handler naming conventions in JSX",
+        "category": "Stylistic Issues",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-handler-names.md"
+      },
+      "messages": {
+        "badHandlerName": "Handler function for {{propKey}} prop key must be a camelCase name beginning with '{{handlerPrefix}}' only",
+        "badPropKey": "Prop key for {{propValue}} must begin with '{{handlerPropPrefix}}'"
+      },
+      "schema": [
+        {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "eventHandlerPrefix": {
+                  "type": "string"
+                },
+                "eventHandlerPropPrefix": {
+                  "type": "string"
+                },
+                "checkLocalVariables": {
+                  "type": "boolean"
+                },
+                "checkInlineFunction": {
+                  "type": "boolean"
+                }
+              },
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "eventHandlerPrefix": {
+                  "type": "string"
+                },
+                "eventHandlerPropPrefix": {
+                  "type": "boolean",
+                  "enum": [false]
+                },
+                "checkLocalVariables": {
+                  "type": "boolean"
+                },
+                "checkInlineFunction": {
+                  "type": "boolean"
+                }
+              },
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "eventHandlerPrefix": {
+                  "type": "boolean",
+                  "enum": [false]
+                },
+                "eventHandlerPropPrefix": {
+                  "type": "string"
+                },
+                "checkLocalVariables": {
+                  "type": "boolean"
+                },
+                "checkInlineFunction": {
+                  "type": "boolean"
+                }
+              },
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "checkLocalVariables": {
+                  "type": "boolean"
+                }
+              },
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "checkInlineFunction": {
+                  "type": "boolean"
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "jsx-indent": {
+    "meta": {
+      "docs": {
+        "description": "Enforce JSX indentation",
+        "category": "Stylistic Issues",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-indent.md"
+      },
+      "fixable": "whitespace",
+      "messages": {
+        "wrongIndent": "Expected indentation of {{needed}} {{type}} {{characters}} but found {{gotten}}."
+      },
+      "schema": [
+        {
+          "anyOf": [
+            {
+              "enum": ["tab"]
+            },
+            {
+              "type": "integer"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "checkAttributes": {
+              "type": "boolean"
+            },
+            "indentLogicalExpressions": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "jsx-indent-props": {
+    "meta": {
+      "docs": {
+        "description": "Enforce props indentation in JSX",
+        "category": "Stylistic Issues",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-indent-props.md"
+      },
+      "fixable": "code",
+      "messages": {
+        "wrongIndent": "Expected indentation of {{needed}} {{type}} {{characters}} but found {{gotten}}."
+      },
+      "schema": [
+        {
+          "anyOf": [
+            {
+              "enum": ["tab", "first"]
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "indentMode": {
+                  "anyOf": [
+                    {
+                      "enum": ["tab", "first"]
+                    },
+                    {
+                      "type": "integer"
+                    }
+                  ]
+                },
+                "ignoreTernaryOperator": {
+                  "type": "boolean"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "jsx-key": {
+    "meta": {
+      "docs": {
+        "description": "Disallow missing `key` props in iterators/collection literals",
+        "category": "Possible Errors",
+        "recommended": true,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-key.md"
+      },
+      "messages": {
+        "missingIterKey": "Missing \"key\" prop for element in iterator",
+        "missingIterKeyUsePrag": "Missing \"key\" prop for element in iterator. Shorthand fragment syntax does not support providing keys. Use {{reactPrag}}.{{fragPrag}} instead",
+        "missingArrayKey": "Missing \"key\" prop for element in array",
+        "missingArrayKeyUsePrag": "Missing \"key\" prop for element in array. Shorthand fragment syntax does not support providing keys. Use {{reactPrag}}.{{fragPrag}} instead",
+        "keyBeforeSpread": "`key` prop must be placed before any `{...spread}, to avoid conflicting with React’s new JSX transform: https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html`",
+        "nonUniqueKeys": "`key` prop must be unique"
+      },
+      "schema": [
+        {
+          "type": "object",
+          "properties": {
+            "checkFragmentShorthand": {
+              "type": "boolean",
+              "default": false
+            },
+            "checkKeyMustBeforeSpread": {
+              "type": "boolean",
+              "default": false
+            },
+            "warnOnDuplicates": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "jsx-max-depth": {
+    "meta": {
+      "docs": {
+        "description": "Enforce JSX maximum depth",
+        "category": "Stylistic Issues",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-max-depth.md"
+      },
+      "messages": {
+        "wrongDepth": "Expected the depth of nested jsx elements to be <= {{needed}}, but found {{found}}."
+      },
+      "schema": [
+        {
+          "type": "object",
+          "properties": {
+            "max": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "jsx-max-props-per-line": {
+    "meta": {
+      "docs": {
+        "description": "Enforce maximum of props on a single line in JSX",
+        "category": "Stylistic Issues",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-max-props-per-line.md"
+      },
+      "fixable": "code",
+      "messages": {
+        "newLine": "Prop `{{prop}}` must be placed on a new line"
+      },
+      "schema": [
+        {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "maximum": {
+                  "type": "object",
+                  "properties": {
+                    "single": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "multi": {
+                      "type": "integer",
+                      "minimum": 1
+                    }
+                  }
+                }
+              },
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "maximum": {
+                  "type": "number",
+                  "minimum": 1
+                },
+                "when": {
+                  "type": "string",
+                  "enum": ["always", "multiline"]
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "jsx-newline": {
+    "meta": {
+      "docs": {
+        "description": "Require or prevent a new line after jsx elements and expressions.",
+        "category": "Stylistic Issues",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-newline.md"
+      },
+      "fixable": "code",
+      "messages": {
+        "require": "JSX element should start in a new line",
+        "prevent": "JSX element should not start in a new line",
+        "allowMultilines": "Multiline JSX elements should start in a new line"
+      },
+      "schema": [
+        {
+          "type": "object",
+          "properties": {
+            "prevent": {
+              "default": false,
+              "type": "boolean"
+            },
+            "allowMultilines": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false,
+          "if": {
+            "properties": {
+              "allowMultilines": {
+                "const": true
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "prevent": {
+                "const": true
+              }
+            },
+            "required": ["prevent"]
+          }
+        }
+      ]
+    }
+  },
+  "jsx-no-bind": {
+    "meta": {
+      "docs": {
+        "description": "Disallow `.bind()` or arrow functions in JSX props",
+        "category": "Best Practices",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-no-bind.md"
+      },
+      "messages": {
+        "bindCall": "JSX props should not use .bind()",
+        "arrowFunc": "JSX props should not use arrow functions",
+        "bindExpression": "JSX props should not use ::",
+        "func": "JSX props should not use functions"
+      },
+      "schema": [
+        {
+          "type": "object",
+          "properties": {
+            "allowArrowFunctions": {
+              "default": false,
+              "type": "boolean"
+            },
+            "allowBind": {
+              "default": false,
+              "type": "boolean"
+            },
+            "allowFunctions": {
+              "default": false,
+              "type": "boolean"
+            },
+            "ignoreRefs": {
+              "default": false,
+              "type": "boolean"
+            },
+            "ignoreDOMComponents": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "jsx-no-comment-textnodes": {
+    "meta": {
+      "docs": {
+        "description": "Disallow comments from being inserted as text nodes",
+        "category": "Possible Errors",
+        "recommended": true,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-no-comment-textnodes.md"
+      },
+      "messages": {
+        "putCommentInBraces": "Comments inside children section of tag should be placed inside braces"
+      },
+      "schema": []
+    }
+  },
+  "jsx-no-constructed-context-values": {
+    "meta": {
+      "docs": {
+        "description": "Disallows JSX context provider values from taking values that will cause needless rerenders",
+        "category": "Best Practices",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-no-constructed-context-values.md"
+      },
+      "messages": {
+        "withIdentifierMsg": "The '{{variableName}}' {{type}} (at line {{nodeLine}}) passed as the value prop to the Context provider (at line {{usageLine}}) changes every render. To fix this consider wrapping it in a useMemo hook.",
+        "withIdentifierMsgFunc": "The '{{variableName}}' {{type}} (at line {{nodeLine}}) passed as the value prop to the Context provider (at line {{usageLine}}) changes every render. To fix this consider wrapping it in a useCallback hook.",
+        "defaultMsg": "The {{type}} passed as the value prop to the Context provider (at line {{nodeLine}}) changes every render. To fix this consider wrapping it in a useMemo hook.",
+        "defaultMsgFunc": "The {{type}} passed as the value prop to the Context provider (at line {{nodeLine}}) changes every render. To fix this consider wrapping it in a useCallback hook."
+      },
+      "schema": {}
+    }
+  },
+  "jsx-no-duplicate-props": {
+    "meta": {
+      "docs": {
+        "description": "Disallow duplicate properties in JSX",
+        "category": "Possible Errors",
+        "recommended": true,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-no-duplicate-props.md"
+      },
+      "messages": {
+        "noDuplicateProps": "No duplicate props allowed"
+      },
+      "schema": [
+        {
+          "type": "object",
+          "properties": {
+            "ignoreCase": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "jsx-no-leaked-render": {
+    "meta": {
+      "docs": {
+        "description": "Disallow problematic leaked values from being rendered",
+        "category": "Possible Errors",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-no-leaked-render.md"
+      },
+      "messages": {
+        "noPotentialLeakedRender": "Potential leaked value that might cause unintentionally rendered values or rendering crashes"
+      },
+      "fixable": "code",
+      "schema": [
+        {
+          "type": "object",
+          "properties": {
+            "validStrategies": {
+              "type": "array",
+              "items": {
+                "enum": ["ternary", "coerce"]
+              },
+              "uniqueItems": true,
+              "default": ["ternary", "coerce"]
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "jsx-no-literals": {
+    "meta": {
+      "docs": {
+        "description": "Disallow usage of string literals in JSX",
+        "category": "Stylistic Issues",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-no-literals.md"
+      },
+      "messages": {
+        "invalidPropValue": "Invalid prop value: \"{{text}}\"",
+        "noStringsInAttributes": "Strings not allowed in attributes: \"{{text}}\"",
+        "noStringsInJSX": "Strings not allowed in JSX files: \"{{text}}\"",
+        "literalNotInJSXExpression": "Missing JSX expression container around literal string: \"{{text}}\""
+      },
+      "schema": [
+        {
+          "type": "object",
+          "properties": {
+            "noStrings": {
+              "type": "boolean"
+            },
+            "allowedStrings": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string"
+              }
+            },
+            "ignoreProps": {
+              "type": "boolean"
+            },
+            "noAttributeStrings": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "jsx-no-script-url": {
+    "meta": {
+      "docs": {
+        "description": "Disallow usage of `javascript:` URLs",
+        "category": "Best Practices",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-no-script-url.md"
+      },
+      "messages": {
+        "noScriptURL": "A future version of React will block javascript: URLs as a security precaution. Use event handlers instead if you can. If you need to generate unsafe HTML, try using dangerouslySetInnerHTML instead."
+      },
+      "schema": [
+        {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "props": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "uniqueItems": true
+                }
+              }
+            },
+            "required": ["name", "props"],
+            "additionalProperties": false
+          }
+        }
+      ]
+    }
+  },
+  "jsx-no-target-blank": {
+    "meta": {
+      "fixable": "code",
+      "docs": {
+        "description": "Disallow `target=\"_blank\"` attribute without `rel=\"noreferrer\"`",
+        "category": "Best Practices",
+        "recommended": true,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-no-target-blank.md"
+      },
+      "messages": {
+        "noTargetBlankWithoutNoreferrer": "Using target=\"_blank\" without rel=\"noreferrer\" (which implies rel=\"noopener\") is a security risk in older browsers: see https://mathiasbynens.github.io/rel-noopener/#recommendations",
+        "noTargetBlankWithoutNoopener": "Using target=\"_blank\" without rel=\"noreferrer\" or rel=\"noopener\" (the former implies the latter and is preferred due to wider support) is a security risk: see https://mathiasbynens.github.io/rel-noopener/#recommendations"
+      },
+      "schema": [
+        {
+          "type": "object",
+          "properties": {
+            "allowReferrer": {
+              "type": "boolean"
+            },
+            "enforceDynamicLinks": {
+              "enum": ["always", "never"]
+            },
+            "warnOnSpreadAttributes": {
+              "type": "boolean"
+            },
+            "links": {
+              "type": "boolean",
+              "default": true
+            },
+            "forms": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "jsx-no-useless-fragment": {
+    "meta": {
+      "type": "suggestion",
+      "fixable": "code",
+      "docs": {
+        "description": "Disallow unnecessary fragments",
+        "category": "Possible Errors",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-no-useless-fragment.md"
+      },
+      "messages": {
+        "NeedsMoreChildren": "Fragments should contain more than one child - otherwise, there’s no need for a Fragment at all.",
+        "ChildOfHtmlElement": "Passing a fragment to an HTML element is useless."
+      },
+      "schema": [
+        {
+          "type": "object",
+          "properties": {
+            "allowExpressions": {
+              "type": "boolean"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "jsx-one-expression-per-line": {
+    "meta": {
+      "docs": {
+        "description": "Require one JSX element per line",
+        "category": "Stylistic Issues",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-one-expression-per-line.md"
+      },
+      "fixable": "whitespace",
+      "messages": {
+        "moveToNewLine": "`{{descriptor}}` must be placed on a new line"
+      },
+      "schema": [
+        {
+          "type": "object",
+          "properties": {
+            "allow": {
+              "enum": ["none", "literal", "single-child"]
+            }
+          },
+          "default": {
+            "allow": "none"
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "jsx-no-undef": {
+    "meta": {
+      "docs": {
+        "description": "Disallow undeclared variables in JSX",
+        "category": "Possible Errors",
+        "recommended": true,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-no-undef.md"
+      },
+      "messages": {
+        "undefined": "'{{identifier}}' is not defined."
+      },
+      "schema": [
+        {
+          "type": "object",
+          "properties": {
+            "allowGlobals": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "jsx-curly-brace-presence": {
+    "meta": {
+      "docs": {
+        "description": "Disallow unnecessary JSX expressions when literals alone are sufficient or enforce JSX expressions on literals in JSX children or attributes",
+        "category": "Stylistic Issues",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-curly-brace-presence.md"
+      },
+      "fixable": "code",
+      "messages": {
+        "unnecessaryCurly": "Curly braces are unnecessary here.",
+        "missingCurly": "Need to wrap this literal in a JSX expression."
+      },
+      "schema": [
+        {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "props": {
+                  "enum": ["always", "never", "ignore"]
+                },
+                "children": {
+                  "enum": ["always", "never", "ignore"]
+                },
+                "propElementValues": {
+                  "enum": ["always", "never", "ignore"]
+                }
+              },
+              "additionalProperties": false
+            },
+            {
+              "enum": ["always", "never", "ignore"]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "jsx-pascal-case": {
+    "meta": {
+      "docs": {
+        "description": "Enforce PascalCase for user-defined JSX components",
+        "category": "Stylistic Issues",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-pascal-case.md"
+      },
+      "messages": {
+        "usePascalCase": "Imported JSX component {{name}} must be in PascalCase",
+        "usePascalOrSnakeCase": "Imported JSX component {{name}} must be in PascalCase or SCREAMING_SNAKE_CASE"
+      },
+      "schema": [
+        {
+          "type": "object",
+          "properties": {
+            "allowAllCaps": {
+              "type": "boolean"
+            },
+            "allowLeadingUnderscore": {
+              "type": "boolean"
+            },
+            "allowNamespace": {
+              "type": "boolean"
+            },
+            "ignore": {
+              "items": [
+                {
+                  "type": "string"
+                }
+              ],
+              "minItems": 0,
+              "type": "array",
+              "uniqueItems": true
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "jsx-fragments": {
+    "meta": {
+      "docs": {
+        "description": "Enforce shorthand or standard form for React fragments",
+        "category": "Stylistic Issues",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-fragments.md"
+      },
+      "fixable": "code",
+      "messages": {
+        "fragmentsNotSupported": "Fragments are only supported starting from React v16.2. Please disable the `react/jsx-fragments` rule in `eslint` settings or upgrade your version of React.",
+        "preferPragma": "Prefer {{react}}.{{fragment}} over fragment shorthand",
+        "preferFragment": "Prefer fragment shorthand over {{react}}.{{fragment}}"
+      },
+      "schema": [
+        {
+          "enum": ["syntax", "element"]
+        }
+      ]
+    }
+  },
+  "jsx-props-no-multi-spaces": {
+    "meta": {
+      "docs": {
+        "description": "Disallow multiple spaces between inline JSX props",
+        "category": "Stylistic Issues",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-props-no-multi-spaces.md"
+      },
+      "fixable": "code",
+      "messages": {
+        "noLineGap": "Expected no line gap between “{{prop1}}” and “{{prop2}}”",
+        "onlyOneSpace": "Expected only one space between “{{prop1}}” and “{{prop2}}”"
+      },
+      "schema": []
+    }
+  },
+  "jsx-props-no-spreading": {
+    "meta": {
+      "docs": {
+        "description": "Disallow JSX prop spreading",
+        "category": "Best Practices",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-props-no-spreading.md"
+      },
+      "messages": {
+        "noSpreading": "Prop spreading is forbidden"
+      },
+      "schema": [
+        {
+          "allOf": [
+            {
+              "type": "object",
+              "properties": {
+                "html": {
+                  "enum": ["enforce", "ignore"]
+                },
+                "custom": {
+                  "enum": ["enforce", "ignore"]
+                },
+                "exceptions": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "uniqueItems": true
+                  }
+                }
+              }
+            },
+            {
+              "not": {
+                "type": "object",
+                "required": ["html", "custom"],
+                "properties": {
+                  "html": {
+                    "enum": ["ignore"]
+                  },
+                  "custom": {
+                    "enum": ["ignore"]
+                  },
+                  "exceptions": {
+                    "type": "array",
+                    "minItems": 0,
+                    "maxItems": 0
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "jsx-sort-default-props": {
+    "meta": {
+      "deprecated": true,
+      "replacedBy": ["sort-default-props"],
+      "docs": {
+        "description": "Enforce defaultProps declarations alphabetical sorting",
+        "category": "Stylistic Issues",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-sort-default-props.md"
+      },
+      "messages": {
+        "propsNotSorted": "Default prop types declarations should be sorted alphabetically"
+      },
+      "schema": [
+        {
+          "type": "object",
+          "properties": {
+            "ignoreCase": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "jsx-sort-props": {
+    "meta": {
+      "docs": {
+        "description": "Enforce props alphabetical sorting",
+        "category": "Stylistic Issues",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-sort-props.md"
+      },
+      "fixable": "code",
+      "messages": {
+        "noUnreservedProps": "A customized reserved first list must only contain a subset of React reserved props. Remove: {{unreservedWords}}",
+        "listIsEmpty": "A customized reserved first list must not be empty",
+        "listReservedPropsFirst": "Reserved props must be listed before all other props",
+        "listCallbacksLast": "Callbacks must be listed after all other props",
+        "listShorthandFirst": "Shorthand props must be listed before all other props",
+        "listShorthandLast": "Shorthand props must be listed after all other props",
+        "listMultilineFirst": "Multiline props must be listed before all other props",
+        "listMultilineLast": "Multiline props must be listed after all other props",
+        "sortPropsByAlpha": "Props should be sorted alphabetically"
+      },
+      "schema": [
+        {
+          "type": "object",
+          "properties": {
+            "callbacksLast": {
+              "type": "boolean"
+            },
+            "shorthandFirst": {
+              "type": "boolean"
+            },
+            "shorthandLast": {
+              "type": "boolean"
+            },
+            "multiline": {
+              "enum": ["ignore", "first", "last"],
+              "default": "ignore"
+            },
+            "ignoreCase": {
+              "type": "boolean"
+            },
+            "noSortAlphabetically": {
+              "type": "boolean"
+            },
+            "reservedFirst": {
+              "type": ["array", "boolean"]
+            },
+            "locale": {
+              "type": "string",
+              "default": "auto"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "jsx-space-before-closing": {
+    "meta": {
+      "deprecated": true,
+      "replacedBy": ["jsx-tag-spacing"],
+      "docs": {
+        "description": "Enforce spacing before closing bracket in JSX",
+        "category": "Stylistic Issues",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-space-before-closing.md"
+      },
+      "fixable": "code",
+      "messages": {
+        "noSpaceBeforeClose": "A space is forbidden before closing bracket",
+        "needSpaceBeforeClose": "A space is required before closing bracket"
+      },
+      "schema": [
+        {
+          "enum": ["always", "never"]
+        }
+      ]
+    }
+  },
+  "jsx-tag-spacing": {
+    "meta": {
+      "docs": {
+        "description": "Enforce whitespace in and around the JSX opening and closing brackets",
+        "category": "Stylistic Issues",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-tag-spacing.md"
+      },
+      "fixable": "whitespace",
+      "messages": {
+        "selfCloseSlashNoSpace": "Whitespace is forbidden between `/` and `>`; write `/>`",
+        "selfCloseSlashNeedSpace": "Whitespace is required between `/` and `>`; write `/ >`",
+        "closeSlashNoSpace": "Whitespace is forbidden between `<` and `/`; write `</`",
+        "closeSlashNeedSpace": "Whitespace is required between `<` and `/`; write `< /`",
+        "beforeSelfCloseNoSpace": "A space is forbidden before closing bracket",
+        "beforeSelfCloseNeedSpace": "A space is required before closing bracket",
+        "beforeSelfCloseNeedNewline": "A newline is required before closing bracket",
+        "afterOpenNoSpace": "A space is forbidden after opening bracket",
+        "afterOpenNeedSpace": "A space is required after opening bracket",
+        "beforeCloseNoSpace": "A space is forbidden before closing bracket",
+        "beforeCloseNeedSpace": "Whitespace is required before closing bracket",
+        "beforeCloseNeedNewline": "A newline is required before closing bracket"
+      },
+      "schema": [
+        {
+          "type": "object",
+          "properties": {
+            "closingSlash": {
+              "enum": ["always", "never", "allow"]
+            },
+            "beforeSelfClosing": {
+              "enum": ["always", "proportional-always", "never", "allow"]
+            },
+            "afterOpening": {
+              "enum": ["always", "allow-multiline", "never", "allow"]
+            },
+            "beforeClosing": {
+              "enum": ["always", "proportional-always", "never", "allow"]
+            }
+          },
+          "default": {
+            "closingSlash": "never",
+            "beforeSelfClosing": "always",
+            "afterOpening": "never",
+            "beforeClosing": "allow"
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "jsx-uses-react": {
+    "meta": {
+      "docs": {
+        "description": "Disallow React to be incorrectly marked as unused",
+        "category": "Best Practices",
+        "recommended": true,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-uses-react.md"
+      },
+      "schema": []
+    }
+  },
+  "jsx-uses-vars": {
+    "meta": {
+      "docs": {
+        "description": "Disallow variables used in JSX to be incorrectly marked as unused",
+        "category": "Best Practices",
+        "recommended": true,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-uses-vars.md"
+      },
+      "schema": []
+    }
+  },
+  "jsx-wrap-multilines": {
+    "meta": {
+      "docs": {
+        "description": "Disallow missing parentheses around multiline JSX",
+        "category": "Stylistic Issues",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/jsx-wrap-multilines.md"
+      },
+      "fixable": "code",
+      "messages": {
+        "missingParens": "Missing parentheses around multilines JSX",
+        "parensOnNewLines": "Parentheses around JSX should be on separate lines"
+      },
+      "schema": [
+        {
+          "type": "object",
+          "properties": {
+            "declaration": {
+              "enum": [true, false, "ignore", "parens", "parens-new-line"]
+            },
+            "assignment": {
+              "enum": [true, false, "ignore", "parens", "parens-new-line"]
+            },
+            "return": {
+              "enum": [true, false, "ignore", "parens", "parens-new-line"]
+            },
+            "arrow": {
+              "enum": [true, false, "ignore", "parens", "parens-new-line"]
+            },
+            "condition": {
+              "enum": [true, false, "ignore", "parens", "parens-new-line"]
+            },
+            "logical": {
+              "enum": [true, false, "ignore", "parens", "parens-new-line"]
+            },
+            "prop": {
+              "enum": [true, false, "ignore", "parens", "parens-new-line"]
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "no-invalid-html-attribute": {
+    "meta": {
+      "docs": {
+        "description": "Disallow usage of invalid attributes",
+        "category": "Possible Errors",
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-invalid-html-attribute.md"
+      },
+      "messages": {
+        "emptyIsMeaningless": "An empty “{{attributeName}}” attribute is meaningless.",
+        "neverValid": "“{{reportingValue}}” is never a valid “{{attributeName}}” attribute value.",
+        "noEmpty": "An empty “{{attributeName}}” attribute is meaningless.",
+        "noMethod": "The ”{{attributeName}}“ attribute cannot be a method.",
+        "notAlone": "“{{reportingValue}}” must be directly followed by “{{missingValue}}”.",
+        "notPaired": "“{{reportingValue}}” can not be directly followed by “{{secondValue}}” without “{{missingValue}}”.",
+        "notValidFor": "“{{reportingValue}}” is not a valid “{{attributeName}}” attribute value for <{{elementName}}>.",
+        "onlyMeaningfulFor": "The ”{{attributeName}}“ attribute only has meaning on the tags: {{tagNames}}",
+        "onlyStrings": "“{{attributeName}}” attribute only supports strings.",
+        "spaceDelimited": "”{{attributeName}}“ attribute values should be space delimited.",
+        "suggestRemoveDefault": "\"remove {{attributeName}}\"",
+        "suggestRemoveEmpty": "\"remove empty attribute {{attributeName}}\"",
+        "suggestRemoveInvalid": "“remove invalid attribute {{reportingValue}}”",
+        "suggestRemoveWhitespaces": "remove whitespaces in “{{reportingValue}}”",
+        "suggestRemoveNonString": "remove non-string value in “{{reportingValue}}”"
+      },
+      "schema": [
+        {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": ["rel"]
+          }
+        }
+      ],
+      "type": "suggestion",
+      "hasSuggestions": true
+    }
+  },
+  "no-access-state-in-setstate": {
+    "meta": {
+      "docs": {
+        "description": "Disallow when this.state is accessed within setState",
+        "category": "Possible Errors",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-access-state-in-setstate.md"
+      },
+      "messages": {
+        "useCallback": "Use callback in setState when referencing the previous state."
+      }
+    }
+  },
+  "no-adjacent-inline-elements": {
+    "meta": {
+      "docs": {
+        "description": "Disallow adjacent inline elements not separated by whitespace.",
+        "category": "Best Practices",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-adjacent-inline-elements.md"
+      },
+      "schema": [],
+      "messages": {
+        "inlineElement": "Child elements which render as inline HTML elements should be separated by a space or wrapped in block level elements."
+      }
+    }
+  },
+  "no-array-index-key": {
+    "meta": {
+      "docs": {
+        "description": "Disallow usage of Array index in keys",
+        "category": "Best Practices",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-array-index-key.md"
+      },
+      "messages": {
+        "noArrayIndex": "Do not use Array index in keys"
+      },
+      "schema": []
+    }
+  },
+  "no-arrow-function-lifecycle": {
+    "meta": {
+      "docs": {
+        "description": "Lifecycle methods should be methods on the prototype, not class fields",
+        "category": "Best Practices",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-arrow-function-lifecycle.md"
+      },
+      "messages": {
+        "lifecycle": "{{propertyName}} is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead."
+      },
+      "schema": [],
+      "fixable": "code"
+    }
+  },
+  "no-children-prop": {
+    "meta": {
+      "docs": {
+        "description": "Disallow passing of children as props",
+        "category": "Best Practices",
+        "recommended": true,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-children-prop.md"
+      },
+      "messages": {
+        "nestChildren": "Do not pass children as props. Instead, nest children between the opening and closing tags.",
+        "passChildrenAsArgs": "Do not pass children as props. Instead, pass them as additional arguments to React.createElement.",
+        "nestFunction": "Do not nest a function between the opening and closing tags. Instead, pass it as a prop.",
+        "passFunctionAsArgs": "Do not pass a function as an additional argument to React.createElement. Instead, pass it as a prop."
+      },
+      "schema": [
+        {
+          "type": "object",
+          "properties": {
+            "allowFunctions": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "no-danger": {
+    "meta": {
+      "docs": {
+        "description": "Disallow usage of dangerous JSX properties",
+        "category": "Best Practices",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-danger.md"
+      },
+      "messages": {
+        "dangerousProp": "Dangerous property '{{name}}' found"
+      },
+      "schema": []
+    }
+  },
+  "no-danger-with-children": {
+    "meta": {
+      "docs": {
+        "description": "Disallow when a DOM element is using both children and dangerouslySetInnerHTML",
+        "category": "Possible Errors",
+        "recommended": true,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-danger-with-children.md"
+      },
+      "messages": {
+        "dangerWithChildren": "Only set one of `children` or `props.dangerouslySetInnerHTML`"
+      },
+      "schema": []
+    }
+  },
+  "no-deprecated": {
+    "meta": {
+      "docs": {
+        "description": "Disallow usage of deprecated methods",
+        "category": "Best Practices",
+        "recommended": true,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-deprecated.md"
+      },
+      "messages": {
+        "deprecated": "{{oldMethod}} is deprecated since React {{version}}{{newMethod}}{{refs}}"
+      },
+      "schema": []
+    }
+  },
+  "no-did-mount-set-state": {
+    "meta": {
+      "docs": {
+        "description": "Disallow usage of setState in componentDidMount",
+        "category": "Best Practices",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-did-mount-set-state.md"
+      },
+      "messages": {
+        "noSetState": "Do not use setState in {{name}}"
+      },
+      "schema": [
+        {
+          "enum": ["disallow-in-func"]
+        }
+      ]
+    }
+  },
+  "no-did-update-set-state": {
+    "meta": {
+      "docs": {
+        "description": "Disallow usage of setState in componentDidUpdate",
+        "category": "Best Practices",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-did-update-set-state.md"
+      },
+      "messages": {
+        "noSetState": "Do not use setState in {{name}}"
+      },
+      "schema": [
+        {
+          "enum": ["disallow-in-func"]
+        }
+      ]
+    }
+  },
+  "no-direct-mutation-state": {
+    "meta": {
+      "docs": {
+        "description": "Disallow direct mutation of this.state",
+        "category": "Possible Errors",
+        "recommended": true,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-direct-mutation-state.md"
+      },
+      "messages": {
+        "noDirectMutation": "Do not mutate state directly. Use setState()."
+      }
+    }
+  },
+  "no-find-dom-node": {
+    "meta": {
+      "docs": {
+        "description": "Disallow usage of findDOMNode",
+        "category": "Best Practices",
+        "recommended": true,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-find-dom-node.md"
+      },
+      "messages": {
+        "noFindDOMNode": "Do not use findDOMNode. It doesn’t work with function components and is deprecated in StrictMode. See https://reactjs.org/docs/react-dom.html#finddomnode"
+      },
+      "schema": []
+    }
+  },
+  "no-is-mounted": {
+    "meta": {
+      "docs": {
+        "description": "Disallow usage of isMounted",
+        "category": "Best Practices",
+        "recommended": true,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-is-mounted.md"
+      },
+      "messages": {
+        "noIsMounted": "Do not use isMounted"
+      },
+      "schema": []
+    }
+  },
+  "no-multi-comp": {
+    "meta": {
+      "docs": {
+        "description": "Disallow multiple component definition per file",
+        "category": "Stylistic Issues",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-multi-comp.md"
+      },
+      "messages": {
+        "onlyOneComponent": "Declare only one React component per file"
+      },
+      "schema": [
+        {
+          "type": "object",
+          "properties": {
+            "ignoreStateless": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "no-namespace": {
+    "meta": {
+      "docs": {
+        "description": "Enforce that namespaces are not used in React elements",
+        "category": "Possible Errors",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-namespace.md"
+      },
+      "messages": {
+        "noNamespace": "React component {{name}} must not be in a namespace, as React does not support them"
+      },
+      "schema": []
+    }
+  },
+  "no-set-state": {
+    "meta": {
+      "docs": {
+        "description": "Disallow usage of setState",
+        "category": "Stylistic Issues",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-set-state.md"
+      },
+      "messages": {
+        "noSetState": "Do not use setState"
+      },
+      "schema": []
+    }
+  },
+  "no-string-refs": {
+    "meta": {
+      "docs": {
+        "description": "Disallow using string references",
+        "category": "Best Practices",
+        "recommended": true,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-string-refs.md"
+      },
+      "messages": {
+        "thisRefsDeprecated": "Using this.refs is deprecated.",
+        "stringInRefDeprecated": "Using string literals in ref attributes is deprecated."
+      },
+      "schema": [
+        {
+          "type": "object",
+          "properties": {
+            "noTemplateLiterals": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "no-redundant-should-component-update": {
+    "meta": {
+      "docs": {
+        "description": "Disallow usage of shouldComponentUpdate when extending React.PureComponent",
+        "category": "Possible Errors",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-redundant-should-component-update.md"
+      },
+      "messages": {
+        "noShouldCompUpdate": "{{component}} does not need shouldComponentUpdate when extending React.PureComponent."
+      },
+      "schema": []
+    }
+  },
+  "no-render-return-value": {
+    "meta": {
+      "docs": {
+        "description": "Disallow usage of the return value of ReactDOM.render",
+        "category": "Best Practices",
+        "recommended": true,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-render-return-value.md"
+      },
+      "messages": {
+        "noReturnValue": "Do not depend on the return value from {{node}}.render"
+      },
+      "schema": []
+    }
+  },
+  "no-this-in-sfc": {
+    "meta": {
+      "docs": {
+        "description": "Disallow `this` from being used in stateless functional components",
+        "category": "Possible Errors",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-this-in-sfc.md"
+      },
+      "messages": {
+        "noThisInSFC": "Stateless functional components should not use `this`"
+      },
+      "schema": []
+    }
+  },
+  "no-typos": {
+    "meta": {
+      "docs": {
+        "description": "Disallow common typos",
+        "category": "Stylistic Issues",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-typos.md"
+      },
+      "messages": {
+        "typoPropTypeChain": "Typo in prop type chain qualifier: {{name}}",
+        "typoPropType": "Typo in declared prop type: {{name}}",
+        "typoStaticClassProp": "Typo in static class property declaration",
+        "typoPropDeclaration": "Typo in property declaration",
+        "typoLifecycleMethod": "Typo in component lifecycle method declaration: {{actual}} should be {{expected}}",
+        "staticLifecycleMethod": "Lifecycle method should be static: {{method}}",
+        "noPropTypesBinding": "`'prop-types'` imported without a local `PropTypes` binding.",
+        "noReactBinding": "`'react'` imported without a local `React` binding."
+      },
+      "schema": []
+    }
+  },
+  "no-unescaped-entities": {
+    "meta": {
+      "docs": {
+        "description": "Disallow unescaped HTML entities from appearing in markup",
+        "category": "Possible Errors",
+        "recommended": true,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-unescaped-entities.md"
+      },
+      "messages": {
+        "unescapedEntity": "HTML entity, `{{entity}}` , must be escaped.",
+        "unescapedEntityAlts": "`{{entity}}` can be escaped with {{alts}}."
+      },
+      "schema": [
+        {
+          "type": "object",
+          "properties": {
+            "forbid": {
+              "type": "array",
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "char": {
+                        "type": "string"
+                      },
+                      "alternatives": {
+                        "type": "array",
+                        "uniqueItems": true,
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "no-unknown-property": {
+    "meta": {
+      "docs": {
+        "description": "Disallow usage of unknown DOM property",
+        "category": "Possible Errors",
+        "recommended": true,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-unknown-property.md"
+      },
+      "fixable": "code",
+      "messages": {
+        "invalidPropOnTag": "Invalid property '{{name}}' found on tag '{{tagName}}', but it is only allowed on: {{allowedTags}}",
+        "unknownPropWithStandardName": "Unknown property '{{name}}' found, use '{{standardName}}' instead",
+        "unknownProp": "Unknown property '{{name}}' found"
+      },
+      "schema": [
+        {
+          "type": "object",
+          "properties": {
+            "ignore": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "no-unsafe": {
+    "meta": {
+      "docs": {
+        "description": "Disallow usage of unsafe lifecycle methods",
+        "category": "Best Practices",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-unsafe.md"
+      },
+      "messages": {
+        "unsafeMethod": "{{method}} is unsafe for use in async rendering. Update the component to use {{newMethod}} instead. {{details}}"
+      },
+      "schema": [
+        {
+          "type": "object",
+          "properties": {
+            "checkAliases": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "no-unstable-nested-components": {
+    "meta": {
+      "docs": {
+        "description": "Disallow creating unstable components inside components",
+        "category": "Possible Errors",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-unstable-nested-components.md"
+      },
+      "schema": [
+        {
+          "type": "object",
+          "properties": {
+            "customValidators": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "allowAsProps": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "no-unused-class-component-methods": {
+    "meta": {
+      "docs": {
+        "description": "Disallow declaring unused methods of component class",
+        "category": "Best Practices",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-unused-class-component-methods.md"
+      },
+      "messages": {
+        "unused": "Unused method or property \"{{name}}\"",
+        "unusedWithClass": "Unused method or property \"{{name}}\" of class \"{{className}}\""
+      },
+      "schema": []
+    }
+  },
+  "no-unused-prop-types": {
+    "meta": {
+      "docs": {
+        "description": "Disallow definitions of unused propTypes",
+        "category": "Best Practices",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-unused-prop-types.md"
+      },
+      "messages": {
+        "unusedPropType": "'{{name}}' PropType is defined but prop is never used"
+      },
+      "schema": [
+        {
+          "type": "object",
+          "properties": {
+            "ignore": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
+            },
+            "customValidators": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "skipShapeProps": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "no-unused-state": {
+    "meta": {
+      "docs": {
+        "description": "Disallow definitions of unused state",
+        "category": "Best Practices",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-unused-state.md"
+      },
+      "messages": {
+        "unusedStateField": "Unused state field: '{{name}}'"
+      },
+      "schema": []
+    }
+  },
+  "no-object-type-as-default-prop": {
+    "meta": {
+      "docs": {
+        "description": "Disallow usage of referential-type variables as default param in functional component",
+        "category": "Best Practices",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-object-type-as-default-prop.md"
+      },
+      "messages": {
+        "forbiddenTypeDefaultParam": "{{propName}} has a/an {{forbiddenType}} as default prop. This could lead to potential infinite render loop in React. Use a variable reference instead of {{forbiddenType}}."
+      }
+    }
+  },
+  "no-will-update-set-state": {
+    "meta": {
+      "docs": {
+        "description": "Disallow usage of setState in componentWillUpdate",
+        "category": "Best Practices",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/no-will-update-set-state.md"
+      },
+      "messages": {
+        "noSetState": "Do not use setState in {{name}}"
+      },
+      "schema": [
+        {
+          "enum": ["disallow-in-func"]
+        }
+      ]
+    }
+  },
+  "prefer-es6-class": {
+    "meta": {
+      "docs": {
+        "description": "Enforce ES5 or ES6 class for React Components",
+        "category": "Stylistic Issues",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/prefer-es6-class.md"
+      },
+      "messages": {
+        "shouldUseES6Class": "Component should use es6 class instead of createClass",
+        "shouldUseCreateClass": "Component should use createClass instead of es6 class"
+      },
+      "schema": [
+        {
+          "enum": ["always", "never"]
+        }
+      ]
+    }
+  },
+  "prefer-exact-props": {
+    "meta": {
+      "docs": {
+        "description": "Prefer exact proptype definitions",
+        "category": "Possible Errors",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/prefer-exact-props.md"
+      },
+      "messages": {
+        "propTypes": "Component propTypes should be exact by using {{exactPropWrappers}}.",
+        "flow": "Component flow props should be set with exact objects."
+      },
+      "schema": []
+    }
+  },
+  "prefer-read-only-props": {
+    "meta": {
+      "docs": {
+        "description": "Enforce that props are read-only",
+        "category": "Stylistic Issues",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/prefer-read-only-props.md"
+      },
+      "fixable": "code",
+      "messages": {
+        "readOnlyProp": "Prop '{{name}}' should be read-only."
+      },
+      "schema": []
+    }
+  },
+  "prefer-stateless-function": {
+    "meta": {
+      "docs": {
+        "description": "Enforce stateless components to be written as a pure function",
+        "category": "Stylistic Issues",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/prefer-stateless-function.md"
+      },
+      "messages": {
+        "componentShouldBePure": "Component should be written as a pure function"
+      },
+      "schema": [
+        {
+          "type": "object",
+          "properties": {
+            "ignorePureComponents": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "prop-types": {
+    "meta": {
+      "docs": {
+        "description": "Disallow missing props validation in a React component definition",
+        "category": "Best Practices",
+        "recommended": true,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/prop-types.md"
+      },
+      "messages": {
+        "missingPropType": "'{{name}}' is missing in props validation"
+      },
+      "schema": [
+        {
+          "type": "object",
+          "properties": {
+            "ignore": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "customValidators": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "skipUndeclared": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "react-in-jsx-scope": {
+    "meta": {
+      "docs": {
+        "description": "Disallow missing React when using JSX",
+        "category": "Possible Errors",
+        "recommended": true,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/react-in-jsx-scope.md"
+      },
+      "messages": {
+        "notInScope": "'{{name}}' must be in scope when using JSX"
+      },
+      "schema": []
+    }
+  },
+  "require-default-props": {
+    "meta": {
+      "docs": {
+        "description": "Enforce a defaultProps definition for every prop that is not a required prop",
+        "category": "Best Practices",
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/require-default-props.md"
+      },
+      "messages": {
+        "noDefaultWithRequired": "propType \"{{name}}\" is required and should not have a defaultProps declaration.",
+        "shouldHaveDefault": "propType \"{{name}}\" is not required, but has no corresponding defaultProps declaration.",
+        "noDefaultPropsWithFunction": "Don’t use defaultProps with function components.",
+        "shouldAssignObjectDefault": "propType \"{{name}}\" is not required, but has no corresponding default argument value.",
+        "destructureInSignature": "Must destructure props in the function signature to initialize an optional prop."
+      },
+      "schema": [
+        {
+          "type": "object",
+          "properties": {
+            "forbidDefaultForRequired": {
+              "type": "boolean"
+            },
+            "classes": {
+              "allow": {
+                "enum": ["defaultProps", "ignore"]
+              }
+            },
+            "functions": {
+              "allow": {
+                "enum": ["defaultArguments", "defaultProps", "ignore"]
+              }
+            },
+            "ignoreFunctionalComponents": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "require-optimization": {
+    "meta": {
+      "docs": {
+        "description": "Enforce React components to have a shouldComponentUpdate method",
+        "category": "Best Practices",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/require-optimization.md"
+      },
+      "messages": {
+        "noShouldComponentUpdate": "Component is not optimized. Please add a shouldComponentUpdate method."
+      },
+      "schema": [
+        {
+          "type": "object",
+          "properties": {
+            "allowDecorators": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "require-render-return": {
+    "meta": {
+      "docs": {
+        "description": "Enforce ES5 or ES6 class for returning value in render function",
+        "category": "Possible Errors",
+        "recommended": true,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/require-render-return.md"
+      },
+      "messages": {
+        "noRenderReturn": "Your render method should have a return statement"
+      },
+      "schema": []
+    }
+  },
+  "self-closing-comp": {
+    "meta": {
+      "docs": {
+        "description": "Disallow extra closing tags for components without children",
+        "category": "Stylistic Issues",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/self-closing-comp.md"
+      },
+      "fixable": "code",
+      "messages": {
+        "notSelfClosing": "Empty components are self-closing"
+      },
+      "schema": [
+        {
+          "type": "object",
+          "properties": {
+            "component": {
+              "default": true,
+              "type": "boolean"
+            },
+            "html": {
+              "default": true,
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "sort-comp": {
+    "meta": {
+      "docs": {
+        "description": "Enforce component methods order",
+        "category": "Stylistic Issues",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/sort-comp.md"
+      },
+      "messages": {
+        "unsortedProps": "{{propA}} should be placed {{position}} {{propB}}"
+      },
+      "schema": [
+        {
+          "type": "object",
+          "properties": {
+            "order": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "groups": {
+              "type": "object",
+              "patternProperties": {
+                "^.*$": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "defaultConfig": {
+      "order": ["static-methods", "lifecycle", "everything-else", "render"],
+      "groups": {
+        "lifecycle": [
+          "displayName",
+          "propTypes",
+          "contextTypes",
+          "childContextTypes",
+          "mixins",
+          "statics",
+          "defaultProps",
+          "constructor",
+          "getDefaultProps",
+          "state",
+          "getInitialState",
+          "getChildContext",
+          "getDerivedStateFromProps",
+          "componentWillMount",
+          "UNSAFE_componentWillMount",
+          "componentDidMount",
+          "componentWillReceiveProps",
+          "UNSAFE_componentWillReceiveProps",
+          "shouldComponentUpdate",
+          "componentWillUpdate",
+          "UNSAFE_componentWillUpdate",
+          "getSnapshotBeforeUpdate",
+          "componentDidUpdate",
+          "componentDidCatch",
+          "componentWillUnmount"
+        ]
+      }
+    }
+  },
+  "sort-default-props": {
+    "meta": {
+      "docs": {
+        "description": "Enforce defaultProps declarations alphabetical sorting",
+        "category": "Stylistic Issues",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/sort-default-props.md"
+      },
+      "messages": {
+        "propsNotSorted": "Default prop types declarations should be sorted alphabetically"
+      },
+      "schema": [
+        {
+          "type": "object",
+          "properties": {
+            "ignoreCase": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "sort-prop-types": {
+    "meta": {
+      "docs": {
+        "description": "Enforce propTypes declarations alphabetical sorting",
+        "category": "Stylistic Issues",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/sort-prop-types.md"
+      },
+      "fixable": "code",
+      "messages": {
+        "requiredPropsFirst": "Required prop types must be listed before all other prop types",
+        "callbackPropsLast": "Callback prop types must be listed after all other prop types",
+        "propsNotSorted": "Prop types declarations should be sorted alphabetically"
+      },
+      "schema": [
+        {
+          "type": "object",
+          "properties": {
+            "requiredFirst": {
+              "type": "boolean"
+            },
+            "callbacksLast": {
+              "type": "boolean"
+            },
+            "ignoreCase": {
+              "type": "boolean"
+            },
+            "noSortAlphabetically": {
+              "type": "boolean"
+            },
+            "sortShapeProp": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "state-in-constructor": {
+    "meta": {
+      "docs": {
+        "description": "Enforce class component state initialization style",
+        "category": "Stylistic Issues",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/state-in-constructor.md"
+      },
+      "messages": {
+        "stateInitConstructor": "State initialization should be in a constructor",
+        "stateInitClassProp": "State initialization should be in a class property"
+      },
+      "schema": [
+        {
+          "enum": ["always", "never"]
+        }
+      ]
+    }
+  },
+  "static-property-placement": {
+    "meta": {
+      "docs": {
+        "description": "Enforces where React component static properties should be positioned.",
+        "category": "Stylistic Issues",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/static-property-placement.md"
+      },
+      "fixable": null,
+      "messages": {
+        "notStaticClassProp": "'{{name}}' should be declared as a static class property.",
+        "notGetterClassFunc": "'{{name}}' should be declared as a static getter class function.",
+        "declareOutsideClass": "'{{name}}' should be declared outside the class body."
+      },
+      "schema": [
+        {
+          "enum": [
+            "static public field",
+            "static getter",
+            "property assignment"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "propTypes": {
+              "enum": [
+                "static public field",
+                "static getter",
+                "property assignment"
+              ]
+            },
+            "defaultProps": {
+              "enum": [
+                "static public field",
+                "static getter",
+                "property assignment"
+              ]
+            },
+            "childContextTypes": {
+              "enum": [
+                "static public field",
+                "static getter",
+                "property assignment"
+              ]
+            },
+            "contextTypes": {
+              "enum": [
+                "static public field",
+                "static getter",
+                "property assignment"
+              ]
+            },
+            "contextType": {
+              "enum": [
+                "static public field",
+                "static getter",
+                "property assignment"
+              ]
+            },
+            "displayName": {
+              "enum": [
+                "static public field",
+                "static getter",
+                "property assignment"
+              ]
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "style-prop-object": {
+    "meta": {
+      "docs": {
+        "description": "Enforce style prop value is an object",
+        "category": "Possible Errors",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/style-prop-object.md"
+      },
+      "messages": {
+        "stylePropNotObject": "Style prop value must be an object"
+      },
+      "schema": [
+        {
+          "type": "object",
+          "properties": {
+            "allow": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "additionalItems": false,
+              "uniqueItems": true
+            }
+          }
+        }
+      ]
+    }
+  },
+  "void-dom-elements-no-children": {
+    "meta": {
+      "docs": {
+        "description": "Disallow void DOM elements (e.g. `<img />`, `<br />`) from receiving children",
+        "category": "Best Practices",
+        "recommended": false,
+        "url": "https://github.com/jsx-eslint/eslint-plugin-react/tree/master/docs/rules/void-dom-elements-no-children.md"
+      },
+      "messages": {
+        "noChildrenInVoidEl": "Void DOM element <{{element}} /> cannot receive children."
+      },
+      "schema": []
+    }
+  }
+}

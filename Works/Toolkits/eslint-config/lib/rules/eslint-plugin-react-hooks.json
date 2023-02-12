@@ -1,0 +1,39 @@
+{
+  "rules-of-hooks": {
+    "meta": {
+      "type": "problem",
+      "docs": {
+        "description": "enforces the Rules of Hooks",
+        "recommended": true,
+        "url": "https://reactjs.org/docs/hooks-rules.html"
+      }
+    }
+  },
+  "exhaustive-deps": {
+    "meta": {
+      "type": "suggestion",
+      "docs": {
+        "description": "verifies the list of dependencies for Hooks like useEffect and similar",
+        "recommended": true,
+        "url": "https://github.com/facebook/react/issues/14920"
+      },
+      "fixable": "code",
+      "hasSuggestions": true,
+      "schema": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "enableDangerousAutofixThisMayCauseInfiniteLoops": false,
+          "properties": {
+            "additionalHooks": {
+              "type": "string"
+            },
+            "enableDangerousAutofixThisMayCauseInfiniteLoops": {
+              "type": "boolean"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
